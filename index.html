@@ -4,185 +4,304 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mr-Aurevo-X — atelier d’outils locaux</title>
-  <meta name="description" content="Outils locaux gratuits. Cursor construit, Mr-Aurevo-X teste et valide. Windows + Linux.">
+  <meta name="description" content="Outils locaux gratuits. Cursor construit, Mr-Aurevo-X teste et valide.">
   <link rel="icon" href="https://avatars.githubusercontent.com/u/284610695?s=64">
   <style>
     :root {
-      --bg: #050807;
-      --panel: #071410;
-      --line: #1a3d2a;
-      --green: #39ff14;
-      --cyan: #00f0ff;
-      --text: #d7ffe6;
-      --muted: #7aa88a;
+      --bg: #101010;
+      --panel: #161616;
+      --card: #1c1c1c;
+      --line: #2a2a2a;
+      --red: #e53935;
+      --red-dim: #8b1e1c;
+      --text: #ececec;
+      --muted: #9a9a9a;
+      --ok: #3dba6a;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font: 16px/1.5 Consolas, ui-monospace, monospace;
-      background: radial-gradient(1200px 600px at 20% -10%, #0b2418 0%, var(--bg) 55%);
       color: var(--text);
+      background: var(--bg);
+      font: 16px/1.5 system-ui, Segoe UI, sans-serif;
     }
-    a { color: var(--cyan); text-decoration: none; }
-    a:hover { color: var(--green); }
-    header {
-      max-width: 960px;
+    a { color: var(--text); }
+    a:hover { color: var(--red); }
+    .topbar {
+      height: 4px;
+      background: var(--red);
+    }
+    header, main, footer {
+      max-width: 980px;
       margin: 0 auto;
-      padding: 2.2rem 1.2rem 1rem;
+      padding: 0 1.25rem;
     }
-    .prompt { color: var(--green); font-size: .95rem; }
-    h1 { margin: .4rem 0 .6rem; font-size: 1.6rem; font-weight: 700; }
-    .lede { color: var(--muted); max-width: 42rem; }
-    nav {
+    header { padding-top: 1.8rem; padding-bottom: 1.2rem; }
+    .prompt {
+      font: 13px/1 Consolas, ui-monospace, monospace;
+      color: var(--muted);
+    }
+    h1 { margin: .45rem 0 .35rem; font-size: 1.85rem; letter-spacing: -.02em; }
+    .lede { color: var(--muted); margin: 0 0 1.1rem; max-width: 38rem; }
+    .langs, nav { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .langs { margin-bottom: .8rem; }
+    .langs button, nav a {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      padding: .28rem .7rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font: inherit;
+      text-decoration: none;
+    }
+    .langs button.on, nav a:hover { border-color: var(--red); color: #fff; background: #241111; }
+    section { margin: 1.6rem 0 2.2rem; }
+    h2 { margin: 0 0 .35rem; font-size: 1.2rem; }
+    h2 span { color: var(--red); }
+    .note { color: var(--muted); margin: 0 0 1rem; font-size: .95rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: .75rem;
+    }
+    article {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: .9rem .95rem 1rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin: 1.2rem 0 0;
+      flex-direction: column;
+      gap: .35rem;
+      min-height: 132px;
     }
-    nav a {
-      display: inline-block;
-      padding: .35rem .7rem;
-      border: 1px solid var(--line);
-      background: #050807;
-      color: var(--green);
-    }
-    nav a:hover { border-color: var(--green); }
-    main { max-width: 960px; margin: 0 auto; padding: 0 1.2rem 3rem; }
-    section {
-      margin-top: 1.8rem;
-      padding: 1.1rem 1.1rem 1.2rem;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-    h2 { margin: 0 0 .75rem; font-size: 1.15rem; color: var(--green); }
-    p { margin: .4rem 0 .9rem; color: var(--muted); }
-    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
-    th, td { text-align: left; padding: .42rem .35rem; border-bottom: 1px solid #123222; vertical-align: top; }
-    th { color: var(--cyan); font-weight: 600; }
+    article h3 { margin: 0; font-size: 1.02rem; }
+    article p { margin: 0; color: var(--muted); font-size: .88rem; flex: 1; }
+    .meta { display: flex; justify-content: space-between; align-items: center; gap: .5rem; font-size: .8rem; }
     .tag {
-      display: inline-block;
-      padding: 0 .35rem;
+      border-radius: 999px;
+      padding: .1rem .5rem;
       border: 1px solid var(--line);
       color: var(--muted);
-      font-size: .78rem;
     }
-    .tag.pub { color: var(--green); border-color: #1f5c28; }
-    .tag.priv { color: var(--cyan); border-color: #155e66; }
+    .tag.pub { color: var(--ok); border-color: #245c38; }
+    .tag.priv { color: #8ab4c9; border-color: #2a4450; }
+    .dl {
+      color: #fff;
+      background: var(--red);
+      border-radius: 6px;
+      padding: .15rem .55rem;
+      text-decoration: none;
+      font-size: .8rem;
+    }
+    .dl:hover { background: #c62828; color: #fff; }
+    .muted-link { color: var(--muted); font-size: .8rem; }
     footer {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 1.2rem 2.5rem;
       color: var(--muted);
       font-size: .85rem;
+      padding-bottom: 2.4rem;
     }
-    .row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .8rem; }
+    html[lang="en"] [data-fr] { display: none; }
+    html[lang="fr"] [data-en] { display: none; }
   </style>
 </head>
 <body>
+  <div class="topbar"></div>
   <header>
     <div class="prompt">mr-aurevo-x@workshop:~</div>
-    <h1>Atelier d’outils locaux</h1>
-    <p class="lede">
-      Cursor construit. Mr-Aurevo-X teste et valide.<br>
-      Gratuit · autant local que possible · sans compte.
-    </p>
+    <h1>Mr-Aurevo-X</h1>
+    <p class="lede" data-fr>Cursor construit. Mr-Aurevo-X teste et valide. Outils locaux, gratuits, sans compte.</p>
+    <p class="lede" data-en>Cursor builds. Mr-Aurevo-X QAs and signs off. Local tools, free, no account.</p>
+    <div class="langs">
+      <button type="button" class="on" data-set="fr">FR</button>
+      <button type="button" data-set="en">EN</button>
+    </div>
     <nav>
       <a href="#windows">Windows</a>
       <a href="#linux">Linux Command</a>
       <a href="#ia">IA</a>
-      <a href="#custom">Sur mesure</a>
+      <a href="#custom" data-fr>Sur mesure</a>
+      <a href="#custom" data-en>Custom</a>
       <a href="https://github.com/Mr-Aurevo-X">GitHub</a>
     </nav>
   </header>
 
   <main>
     <section id="windows">
-      <h2>🪟 Windows — PC Command</h2>
-      <p>4 hubs admin, zip portable <code>Launch-Hub-*.zip</code>, UAC. Pas un seul .exe fourre-tout. Binaires non signés : SmartScreen possible.</p>
-      <table>
-        <thead><tr><th>Hub</th><th>Rôle</th><th></th><th></th></tr></thead>
-        <tbody>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Systeme">Système</a></td><td>ménage · RAM · process · désinstall</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Systeme/releases/tag/v2.0.0">v2.0.0</a></td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Reseau">Réseau</a></td><td>adaptateurs · carte · traffic · Wi‑Fi</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Reseau/releases/tag/v2.0.0">v2.0.0</a></td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Securite">Sécurité</a></td><td>FileGuard · CertView · RepoRadar · WinAudit</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Securite/releases/tag/v2.0.0">v2.0.0</a></td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Utilitaires">Utilitaires</a></td><td>UtilKit + MediaKit</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Utilitaires/releases/tag/v2.0.0">v2.0.0</a></td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:1.1rem">Standalones</p>
-      <table>
-        <thead><tr><th>App</th><th>Rôle</th><th></th><th></th></tr></thead>
-        <tbody>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/QrTools">QrTools</a></td><td>QR simple + lot</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/UnitConvert">UnitConvert</a></td><td>unités + devises</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/TimeTools">TimeTools</a></td><td>horodatage · chrono · Pomodoro</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/PixClean">PixClean</a></td><td>strip EXIF / GPS / XMP</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/GameChangelog">GameChangelog</a></td><td>patch notes Steam</td><td><span class="tag pub">public</span></td><td>v1.0.3</td></tr>
-          <tr><td>Game Lounge</td><td>hub de jeux web (28 *-X)</td><td><span class="tag priv">privé</span></td><td>—</td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/SoftTunes">SoftTunes</a></td><td>prépa session + HUD FPS (pas un booster)</td><td><span class="tag pub">public</span></td><td>v2.0.2</td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/LocalDock">LocalDock</a></td><td>racines de confiance · loopback</td><td><span class="tag pub">public</span></td><td>v0.1.0</td></tr>
-        </tbody>
-      </table>
+      <h2><span>Windows</span> · PC Command</h2>
+      <p class="note" data-fr>4 hubs admin, zip portable <code>Launch-Hub-*.zip</code>, UAC. Binaires non signés : SmartScreen possible.</p>
+      <p class="note" data-en>4 admin hubs, portable <code>Launch-Hub-*.zip</code>, UAC. Unsigned binaries: SmartScreen may appear.</p>
+      <div class="grid">
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/Hub-Systeme">Système</a></h3>
+          <p data-fr>Ménage, RAM, process, désinstall.</p>
+          <p data-en>Cleanup, RAM, processes, uninstall.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="dl" href="https://github.com/Mr-Aurevo-X/Hub-Systeme/releases/tag/v2.0.0">v2.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/Hub-Reseau">Réseau</a></h3>
+          <p data-fr>Adaptateurs, carte, traffic, Wi‑Fi.</p>
+          <p data-en>Adapters, map, traffic, Wi‑Fi.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="dl" href="https://github.com/Mr-Aurevo-X/Hub-Reseau/releases/tag/v2.0.0">v2.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/Hub-Securite">Sécurité</a></h3>
+          <p>FileGuard · CertView · RepoRadar · WinAudit</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="dl" href="https://github.com/Mr-Aurevo-X/Hub-Securite/releases/tag/v2.0.0">v2.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/Hub-Utilitaires">Utilitaires</a></h3>
+          <p>UtilKit + MediaKit</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="dl" href="https://github.com/Mr-Aurevo-X/Hub-Utilitaires/releases/tag/v2.0.0">v2.0.0</a></div>
+        </article>
+      </div>
+      <h2 style="margin-top:1.4rem" data-fr>Standalones</h2>
+      <h2 style="margin-top:1.4rem" data-en>Standalones</h2>
+      <div class="grid">
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/QrTools">QrTools</a></h3>
+          <p data-fr>QR simple + lot.</p><p data-en>Simple + batch QR.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/QrTools/releases">v2.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/UnitConvert">UnitConvert</a></h3>
+          <p data-fr>Unités + devises.</p><p data-en>Units + currencies.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/UnitConvert/releases">v2.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/TimeTools">TimeTools</a></h3>
+          <p data-fr>Horodatage, chrono, Pomodoro.</p><p data-en>Timestamps, stopwatch, Pomodoro.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/TimeTools/releases">v2.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/PixClean">PixClean</a></h3>
+          <p>EXIF / GPS / XMP</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/PixClean/releases">v2.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/GameChangelog">GameChangelog</a></h3>
+          <p data-fr>Patch notes Steam.</p><p data-en>Steam patch notes.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/GameChangelog/releases">v1.0.3</a></div>
+        </article>
+        <article>
+          <h3>Game Lounge</h3>
+          <p data-fr>Hub de jeux web (28 *-X).</p><p data-en>Web game hub (28 *-X).</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/SoftTunes">SoftTunes</a></h3>
+          <p data-fr>Prépa session + HUD FPS (pas un booster).</p><p data-en>Session prep + FPS HUD (not a booster).</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/SoftTunes/releases">v2.0.2</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/LocalDock">LocalDock</a></h3>
+          <p data-fr>Racines de confiance, loopback.</p><p data-en>Trust roots, loopback.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/LocalDock/releases">v0.1.0</a></div>
+        </article>
+      </div>
     </section>
 
     <section id="linux">
-      <h2>🐧 Linux Command</h2>
-      <p>Launcher optionnel (Tauri) + 5 hubs GTK 4 autonomes. Dépôts encore privés — pas de lien GitHub ici (404 pour un visiteur). Les binaires Crypto Tracker sont publics.</p>
-      <table>
-        <thead><tr><th>App</th><th>Rôle</th><th></th><th></th></tr></thead>
-        <tbody>
-          <tr><td>Linux Command</td><td>launcher / commander (optionnel)</td><td><span class="tag priv">privé</span></td><td>v0.2.0</td></tr>
-          <tr><td>Hub Système</td><td>santé · process · paquets · disques · journaux</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
-          <tr><td>Hub Réseau</td><td>interfaces · flotte · diagnostic</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
-          <tr><td>Hub Sécurité</td><td>audit · secrets · permissions</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
-          <tr><td>Hub Utilitaires</td><td>search · hash · PDF · images · disk map</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
-          <tr><td>Hub Dev</td><td>loopback + ports locaux</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:1.1rem">Standalones</p>
-      <table>
-        <thead><tr><th>App</th><th>Rôle</th><th></th><th></th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Crypto Tracker</td>
-            <td>surveillance crypto locale — pas un exchange, pas d’achat/vente</td>
-            <td><span class="tag priv">sources privées</span> <span class="tag pub">binaires publics</span></td>
-            <td>
-              <a href="https://github.com/Mr-Aurevo-X/linux-flatpak-releases/releases/tag/crypto-tracker-v1.2.21">Flatpak 1.2.21</a>
-              ·
-              <a href="https://github.com/Mr-Aurevo-X/linux-releases/releases/tag/crypto-tracker-v1.2.17">natif 1.2.17</a>
-            </td>
-          </tr>
-          <tr><td>Game Lounge</td><td>hub de jeux web (28 *-X)</td><td><span class="tag priv">privé</span></td><td>—</td></tr>
-        </tbody>
-      </table>
+      <h2><span>Linux</span> Command</h2>
+      <p class="note" data-fr>Launcher optionnel + 5 hubs GTK 4. Dépôts encore privés (pas de lien 404). Binaires Crypto Tracker publics.</p>
+      <p class="note" data-en>Optional launcher + 5 GTK 4 hubs. Repos still private (no 404 links). Crypto Tracker binaries are public.</p>
+      <div class="grid">
+        <article>
+          <h3>Linux Command</h3>
+          <p data-fr>Launcher / commander optionnel.</p><p data-en>Optional launcher / commander.</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span> <span class="muted-link">v0.2.0</span></div>
+        </article>
+        <article>
+          <h3>Hub Système</h3>
+          <p data-fr>Santé, process, paquets, disques, journaux.</p><p data-en>Health, processes, packages, disks, logs.</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span> <span class="muted-link">v1.0.0</span></div>
+        </article>
+        <article>
+          <h3>Hub Réseau</h3>
+          <p data-fr>Interfaces, flotte, diagnostic.</p><p data-en>Interfaces, fleet, diagnostics.</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span> <span class="muted-link">v1.0.0</span></div>
+        </article>
+        <article>
+          <h3>Hub Sécurité</h3>
+          <p data-fr>Audit, secrets, permissions.</p><p data-en>Audit, secrets, permissions.</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span> <span class="muted-link">v1.0.0</span></div>
+        </article>
+        <article>
+          <h3>Hub Utilitaires</h3>
+          <p>Search · hash · PDF · images · disk map</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span> <span class="muted-link">v1.0.0</span></div>
+        </article>
+        <article>
+          <h3>Hub Dev</h3>
+          <p data-fr>Loopback + ports locaux.</p><p data-en>Loopback + local ports.</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span> <span class="muted-link">v1.0.0</span></div>
+        </article>
+        <article>
+          <h3>Crypto Tracker</h3>
+          <p data-fr>Surveillance crypto locale — pas un exchange, pas d’achat/vente.</p>
+          <p data-en>Local crypto watch — not an exchange, no buy/sell.</p>
+          <div class="meta">
+            <span class="tag pub" data-fr>binaires</span><span class="tag pub" data-en>binaries</span>
+            <span>
+              <a class="dl" href="https://github.com/Mr-Aurevo-X/linux-flatpak-releases/releases/tag/crypto-tracker-v1.2.21">Flatpak</a>
+              <a class="muted-link" href="https://github.com/Mr-Aurevo-X/linux-releases/releases/tag/crypto-tracker-v1.2.17">natif</a>
+            </span>
+          </div>
+        </article>
+        <article>
+          <h3>Game Lounge</h3>
+          <p data-fr>Hub de jeux web (28 *-X).</p><p data-en>Web game hub (28 *-X).</p>
+          <div class="meta"><span class="tag priv" data-fr>privé</span><span class="tag priv" data-en>private</span></div>
+        </article>
+      </div>
     </section>
 
     <section id="ia">
-      <h2>⚡ IA — atelier</h2>
-      <p>Si ça sort, l’IA l’a écrit — Mr-Aurevo-X l’a validé.</p>
-      <table>
-        <thead><tr><th>Projet</th><th>Rôle</th><th></th><th></th></tr></thead>
-        <tbody>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/FakeVPS">FakeVPS</a></td><td>Ubuntu local style VPS</td><td><span class="tag pub">public</span></td><td>v1.0.0</td></tr>
-          <tr><td><a href="https://github.com/Mr-Aurevo-X/Mr-X-Sentinel">Mr-X Sentinel</a></td><td>bot Discord self-host</td><td><span class="tag pub">public · figé</span></td><td>v2.0.0</td></tr>
-        </tbody>
-      </table>
+      <h2><span>IA</span></h2>
+      <p class="note" data-fr>Si ça sort, l’IA l’a écrit — je l’ai validé.</p>
+      <p class="note" data-en>If it ships, AI wrote it — I signed it off.</p>
+      <div class="grid">
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/FakeVPS">FakeVPS</a></h3>
+          <p data-fr>Ubuntu local style VPS.</p><p data-en>Local Ubuntu VPS rehearsal.</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/FakeVPS/releases">v1.0.0</a></div>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Mr-Aurevo-X/Mr-X-Sentinel">Mr-X Sentinel</a></h3>
+          <p data-fr>Bot Discord self-host (figé).</p><p data-en>Self-hosted Discord bot (frozen).</p>
+          <div class="meta"><span class="tag pub">public</span> <a class="muted-link" href="https://github.com/Mr-Aurevo-X/Mr-X-Sentinel/releases">v2.0.0</a></div>
+        </article>
+      </div>
     </section>
 
     <section id="custom">
-      <h2>🛠️ Sur mesure</h2>
-      <p>Logiciels à la demande, <strong>toujours via IA</strong>. Cursor construit · Mr-Aurevo-X cadre, teste et valide. Pas de malware, pas de crack, pas de spyware. Tout repo public reste gratuit.</p>
-      <div class="row">
-        <a href="https://discord.com/users/406891052516114442">Discord DM</a>
-        <a href="https://www.paypal.com/paypalme/aurevo1">PayPal</a>
-        <a href="https://revolut.me/mr_aurevo_x">Revolut</a>
-      </div>
+      <h2 data-fr><span>Sur mesure</span></h2>
+      <h2 data-en><span>Custom builds</span></h2>
+      <p class="note" data-fr>Toujours via IA. Cursor construit · Mr-Aurevo-X cadre, teste et valide. Pas de malware / crack / spyware. Les repos publics restent gratuits.</p>
+      <p class="note" data-en>Always AI-built. Cursor builds · Mr-Aurevo-X scopes, tests, signs off. No malware / cracks / spyware. Public repos stay free.</p>
+      <p>
+        <a class="dl" href="https://discord.com/users/406891052516114442">Discord</a>
+        <a class="muted-link" href="https://www.paypal.com/paypalme/aurevo1">PayPal</a>
+        <a class="muted-link" href="https://revolut.me/mr_aurevo_x">Revolut</a>
+      </p>
     </section>
   </main>
 
   <footer>
     Built by Cursor AI · Ideas &amp; QA by Mr-Aurevo-X ·
-    <a href="https://github.com/Mr-Aurevo-X/Mr-Aurevo-X.github.io">source de cette page</a>
+    <a href="https://github.com/Mr-Aurevo-X/Mr-Aurevo-X.github.io">source</a>
   </footer>
+  <script>
+    const root = document.documentElement;
+    const buttons = document.querySelectorAll("[data-set]");
+    function setLang(lang) {
+      root.lang = lang;
+      buttons.forEach((b) => b.classList.toggle("on", b.dataset.set === lang));
+      try { localStorage.setItem("lang", lang); } catch (_) {}
+    }
+    buttons.forEach((b) => b.addEventListener("click", () => setLang(b.dataset.set)));
+    const saved = (() => { try { return localStorage.getItem("lang"); } catch (_) { return null; } })();
+    setLang(saved === "en" ? "en" : "fr");
+  </script>
 </body>
 </html>
