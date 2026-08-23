@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mr-Aurevo-X — atelier d’outils locaux</title>
+  <meta name="description" content="Outils locaux gratuits. Cursor construit, Mr-Aurevo-X teste et valide. Windows + Linux.">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/284610695?s=64">
+  <style>
+    :root {
+      --bg: #050807;
+      --panel: #071410;
+      --line: #1a3d2a;
+      --green: #39ff14;
+      --cyan: #00f0ff;
+      --text: #d7ffe6;
+      --muted: #7aa88a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.5 Consolas, ui-monospace, monospace;
+      background: radial-gradient(1200px 600px at 20% -10%, #0b2418 0%, var(--bg) 55%);
+      color: var(--text);
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { color: var(--green); }
+    header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.2rem 1.2rem 1rem;
+    }
+    .prompt { color: var(--green); font-size: .95rem; }
+    h1 { margin: .4rem 0 .6rem; font-size: 1.6rem; font-weight: 700; }
+    .lede { color: var(--muted); max-width: 42rem; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.2rem 0 0;
+    }
+    nav a {
+      display: inline-block;
+      padding: .35rem .7rem;
+      border: 1px solid var(--line);
+      background: #050807;
+      color: var(--green);
+    }
+    nav a:hover { border-color: var(--green); }
+    main { max-width: 960px; margin: 0 auto; padding: 0 1.2rem 3rem; }
+    section {
+      margin-top: 1.8rem;
+      padding: 1.1rem 1.1rem 1.2rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    h2 { margin: 0 0 .75rem; font-size: 1.15rem; color: var(--green); }
+    p { margin: .4rem 0 .9rem; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { text-align: left; padding: .42rem .35rem; border-bottom: 1px solid #123222; vertical-align: top; }
+    th { color: var(--cyan); font-weight: 600; }
+    .tag {
+      display: inline-block;
+      padding: 0 .35rem;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+    .tag.pub { color: var(--green); border-color: #1f5c28; }
+    .tag.priv { color: var(--cyan); border-color: #155e66; }
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.2rem 2.5rem;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .8rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="prompt">mr-aurevo-x@workshop:~</div>
+    <h1>Atelier d’outils locaux</h1>
+    <p class="lede">
+      Cursor construit. Mr-Aurevo-X teste et valide.<br>
+      Gratuit · autant local que possible · sans compte.
+    </p>
+    <nav>
+      <a href="#windows">Windows</a>
+      <a href="#linux">Linux Command</a>
+      <a href="#ia">IA</a>
+      <a href="#custom">Sur mesure</a>
+      <a href="https://github.com/Mr-Aurevo-X">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="windows">
+      <h2>🪟 Windows — PC Command</h2>
+      <p>4 hubs admin, zip portable <code>Launch-Hub-*.zip</code>, UAC. Pas un seul .exe fourre-tout. Binaires non signés : SmartScreen possible.</p>
+      <table>
+        <thead><tr><th>Hub</th><th>Rôle</th><th></th><th></th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Systeme">Système</a></td><td>ménage · RAM · process · désinstall</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Systeme/releases/tag/v2.0.0">v2.0.0</a></td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Reseau">Réseau</a></td><td>adaptateurs · carte · traffic · Wi‑Fi</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Reseau/releases/tag/v2.0.0">v2.0.0</a></td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Securite">Sécurité</a></td><td>FileGuard · CertView · RepoRadar · WinAudit</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Securite/releases/tag/v2.0.0">v2.0.0</a></td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/Hub-Utilitaires">Utilitaires</a></td><td>UtilKit + MediaKit</td><td><span class="tag pub">public</span></td><td><a href="https://github.com/Mr-Aurevo-X/Hub-Utilitaires/releases/tag/v2.0.0">v2.0.0</a></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:1.1rem">Standalones</p>
+      <table>
+        <thead><tr><th>App</th><th>Rôle</th><th></th><th></th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/QrTools">QrTools</a></td><td>QR simple + lot</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/UnitConvert">UnitConvert</a></td><td>unités + devises</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/TimeTools">TimeTools</a></td><td>horodatage · chrono · Pomodoro</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/PixClean">PixClean</a></td><td>strip EXIF / GPS / XMP</td><td><span class="tag pub">public</span></td><td>v2.0.0</td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/GameChangelog">GameChangelog</a></td><td>patch notes Steam</td><td><span class="tag pub">public</span></td><td>v1.0.3</td></tr>
+          <tr><td>Game Lounge</td><td>hub de jeux web (28 *-X)</td><td><span class="tag priv">privé</span></td><td>—</td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/SoftTunes">SoftTunes</a></td><td>prépa session + HUD FPS (pas un booster)</td><td><span class="tag pub">public</span></td><td>v2.0.2</td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/LocalDock">LocalDock</a></td><td>racines de confiance · loopback</td><td><span class="tag pub">public</span></td><td>v0.1.0</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="linux">
+      <h2>🐧 Linux Command</h2>
+      <p>Launcher optionnel (Tauri) + 5 hubs GTK 4 autonomes. Dépôts encore privés — pas de lien GitHub ici (404 pour un visiteur). Les binaires Crypto Tracker sont publics.</p>
+      <table>
+        <thead><tr><th>App</th><th>Rôle</th><th></th><th></th></tr></thead>
+        <tbody>
+          <tr><td>Linux Command</td><td>launcher / commander (optionnel)</td><td><span class="tag priv">privé</span></td><td>v0.2.0</td></tr>
+          <tr><td>Hub Système</td><td>santé · process · paquets · disques · journaux</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
+          <tr><td>Hub Réseau</td><td>interfaces · flotte · diagnostic</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
+          <tr><td>Hub Sécurité</td><td>audit · secrets · permissions</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
+          <tr><td>Hub Utilitaires</td><td>search · hash · PDF · images · disk map</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
+          <tr><td>Hub Dev</td><td>loopback + ports locaux</td><td><span class="tag priv">privé</span></td><td>v1.0.0</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:1.1rem">Standalones</p>
+      <table>
+        <thead><tr><th>App</th><th>Rôle</th><th></th><th></th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Crypto Tracker</td>
+            <td>surveillance crypto locale — pas un exchange, pas d’achat/vente</td>
+            <td><span class="tag priv">sources privées</span> <span class="tag pub">binaires publics</span></td>
+            <td>
+              <a href="https://github.com/Mr-Aurevo-X/linux-flatpak-releases/releases/tag/crypto-tracker-v1.2.21">Flatpak 1.2.21</a>
+              ·
+              <a href="https://github.com/Mr-Aurevo-X/linux-releases/releases/tag/crypto-tracker-v1.2.17">natif 1.2.17</a>
+            </td>
+          </tr>
+          <tr><td>Game Lounge</td><td>hub de jeux web (28 *-X)</td><td><span class="tag priv">privé</span></td><td>—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="ia">
+      <h2>⚡ IA — atelier</h2>
+      <p>Si ça sort, l’IA l’a écrit — Mr-Aurevo-X l’a validé.</p>
+      <table>
+        <thead><tr><th>Projet</th><th>Rôle</th><th></th><th></th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/FakeVPS">FakeVPS</a></td><td>Ubuntu local style VPS</td><td><span class="tag pub">public</span></td><td>v1.0.0</td></tr>
+          <tr><td><a href="https://github.com/Mr-Aurevo-X/Mr-X-Sentinel">Mr-X Sentinel</a></td><td>bot Discord self-host</td><td><span class="tag pub">public · figé</span></td><td>v2.0.0</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="custom">
+      <h2>🛠️ Sur mesure</h2>
+      <p>Logiciels à la demande, <strong>toujours via IA</strong>. Cursor construit · Mr-Aurevo-X cadre, teste et valide. Pas de malware, pas de crack, pas de spyware. Tout repo public reste gratuit.</p>
+      <div class="row">
+        <a href="https://discord.com/users/406891052516114442">Discord DM</a>
+        <a href="https://www.paypal.com/paypalme/aurevo1">PayPal</a>
+        <a href="https://revolut.me/mr_aurevo_x">Revolut</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Built by Cursor AI · Ideas &amp; QA by Mr-Aurevo-X ·
+    <a href="https://github.com/Mr-Aurevo-X/Mr-Aurevo-X.github.io">source de cette page</a>
+  </footer>
+</body>
+</html>
