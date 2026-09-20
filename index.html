@@ -97,6 +97,34 @@
     .dl:hover { background: #c62828; color: #fff; }
     .meta span { display: inline-flex; gap: .35rem; align-items: center; flex-wrap: wrap; }
     .muted-link { color: var(--muted); font-size: .8rem; }
+    .wallets {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .85rem;
+    }
+    .wallets th, .wallets td {
+      text-align: left;
+      padding: .45rem .35rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .wallets th { color: var(--muted); font-weight: 600; }
+    .wallets code {
+      font-size: .78rem;
+      word-break: break-all;
+      cursor: pointer;
+    }
+    .wallets button {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      border-radius: 6px;
+      padding: .12rem .45rem;
+      cursor: pointer;
+      font: inherit;
+      font-size: .75rem;
+    }
+    .wallets button:hover { border-color: var(--red); color: #fff; }
     footer {
       color: var(--muted);
       font-size: .85rem;
@@ -123,6 +151,7 @@
       <a href="#ia">IA</a>
       <a href="#custom" data-fr>Sur mesure</a>
       <a href="#custom" data-en>Custom</a>
+      <a href="#support">Crypto</a>
       <a href="https://github.com/Mr-Aurevo-X">GitHub</a>
     </nav>
   </header>
@@ -285,8 +314,39 @@
       <p class="note" data-en>Always AI-built. Cursor builds · Mr-Aurevo-X scopes, tests, signs off. No malware / cracks / spyware. Public repos stay free.</p>
       <p>
         <a class="dl" href="https://discord.com/users/406891052516114442">Discord</a>
-        <span class="muted-link">Crypto — bouton Soutien dans les apps Linux</span>
+        <a class="dl" href="#support">Crypto</a>
       </p>
+    </section>
+
+    <section id="support">
+      <h2 data-fr><span>Dons crypto</span></h2>
+      <h2 data-en><span>Crypto donations</span></h2>
+      <p class="note" data-fr>Facultatif. Copie l’adresse dans le tableau — jamais depuis une capture. Vérifie le réseau.</p>
+      <p class="note" data-en>Optional. Copy the address from the table — never from a screenshot. Check the network.</p>
+      <table class="wallets">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th data-fr>Réseau</th><th data-en>Network</th>
+            <th data-fr>Adresse</th><th data-en>Address</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>BTC</td><td>Bitcoin</td><td><code>bc1ql2wj4spehf2zu40329lspr9a3thzuy9gyy4xm7</code></td><td><button type="button" data-copy="bc1ql2wj4spehf2zu40329lspr9a3thzuy9gyy4xm7">Copier</button></td></tr>
+          <tr><td>ETH</td><td>Ethereum</td><td><code>0x21daa0434976FDA8C4Ce6fA494602e734f051e21</code></td><td><button type="button" data-copy="0x21daa0434976FDA8C4Ce6fA494602e734f051e21">Copier</button></td></tr>
+          <tr><td>HYPE</td><td>Hyperliquid (EVM)</td><td><code>0x21daa0434976FDA8C4Ce6fA494602e734f051e21</code></td><td><button type="button" data-copy="0x21daa0434976FDA8C4Ce6fA494602e734f051e21">Copier</button></td></tr>
+          <tr><td>SOL</td><td>Solana</td><td><code>E1MoayFrzC6Phe4g17Qfswub8hk1ytnp8Db8qguqPdv1</code></td><td><button type="button" data-copy="E1MoayFrzC6Phe4g17Qfswub8hk1ytnp8Db8qguqPdv1">Copier</button></td></tr>
+          <tr><td>USDT</td><td>Tron (TRC-20)</td><td><code>TKVvKinR4Ksrs2f8AN5NuVeysmizmh42Ch</code></td><td><button type="button" data-copy="TKVvKinR4Ksrs2f8AN5NuVeysmizmh42Ch">Copier</button></td></tr>
+          <tr><td>USDC</td><td>Solana</td><td><code>E1MoayFrzC6Phe4g17Qfswub8hk1ytnp8Db8qguqPdv1</code></td><td><button type="button" data-copy="E1MoayFrzC6Phe4g17Qfswub8hk1ytnp8Db8qguqPdv1">Copier</button></td></tr>
+          <tr><td>BCH</td><td>Bitcoin Cash</td><td><code>bitcoincash:qrdwzcg372fvahkk0rz7y8mrr0fnaw2ygg5fk6mfke</code></td><td><button type="button" data-copy="bitcoincash:qrdwzcg372fvahkk0rz7y8mrr0fnaw2ygg5fk6mfke">Copier</button></td></tr>
+          <tr><td>LTC</td><td>Litecoin</td><td><code>ltc1qmnm2j2nn59ycnhk3x0t33c24fpxlxjxrxha2mj</code></td><td><button type="button" data-copy="ltc1qmnm2j2nn59ycnhk3x0t33c24fpxlxjxrxha2mj">Copier</button></td></tr>
+          <tr><td>DOGE</td><td>Dogecoin</td><td><code>D7649yHmrYMCGcfFfoKVxyAAot45HCmAVp</code></td><td><button type="button" data-copy="D7649yHmrYMCGcfFfoKVxyAAot45HCmAVp">Copier</button></td></tr>
+          <tr><td>XRP</td><td>XRP Ledger</td><td><code>rEtVrJSb3BTANFKT2aTCS9jUahp74v3U6K</code></td><td><button type="button" data-copy="rEtVrJSb3BTANFKT2aTCS9jUahp74v3U6K">Copier</button></td></tr>
+          <tr><td>XLM</td><td>Stellar</td><td><code>GDISSPFVTPNKMVMX5OSNJBLS2DYBMP4ZTBPRSORHWXI4NJHFS5KKSBRN</code></td><td><button type="button" data-copy="GDISSPFVTPNKMVMX5OSNJBLS2DYBMP4ZTBPRSORHWXI4NJHFS5KKSBRN">Copier</button></td></tr>
+        </tbody>
+      </table>
+      <p class="note"><a class="muted-link" href="https://github.com/Mr-Aurevo-X#user-content-support">GitHub</a></p>
     </section>
   </main>
 
@@ -305,6 +365,18 @@
     buttons.forEach((b) => b.addEventListener("click", () => setLang(b.dataset.set)));
     const saved = (() => { try { return localStorage.getItem("lang"); } catch (_) { return null; } })();
     setLang(saved === "en" ? "en" : "fr");
+
+    document.querySelectorAll("[data-copy]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const value = btn.getAttribute("data-copy") || "";
+        try {
+          await navigator.clipboard.writeText(value);
+          const prev = btn.textContent;
+          btn.textContent = "OK";
+          setTimeout(() => { btn.textContent = prev; }, 1200);
+        } catch (_) {}
+      });
+    });
   </script>
 </body>
 </html>
